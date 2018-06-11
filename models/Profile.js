@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Scehma;
+const Schema = mongoose.Schema;
 
 // Create Schema
 const ProfileSchema = new Schema({
@@ -67,7 +67,7 @@ const ProfileSchema = new Schema({
   experience: [
     {
       school: {
-        String,
+        type: String,
         required: true
       },
       degree: {
