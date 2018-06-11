@@ -38,7 +38,7 @@ const ProfileSchema = new Schema({
   experience: [
     {
       title: {
-        String,
+        type: String,
         required: true
       },
       company: {
