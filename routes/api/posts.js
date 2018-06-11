@@ -91,4 +91,75 @@ router.delete(
   }
 );
 
+// @route   POST api/posts/like/:id
+// @desc    Like post
+// @access  Private
+router.post(
+  '/like/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id)
+        .then(post => {
+          // check if user already liked the post
+          const alreadyLiked =
+            post.likes.filter(like => {
+              return like.user.toString() === req.user.id;
+            }).length > 0;
+          if (alreadyLiked) {
+            const removeIndex = post.likes
+              .map(item => item.user.toString())
+              .indexOf(req.user.id);
+
+            post.likes.splice(removeIndex, 1);
+            post.save().then(post => res.json(post));
+            return;
+            // return res
+            //   .status(400)
+            //   .json({ alreadyliked: 'User already liked this post' });
+          }
+
+          // add user to likes array
+          post.likes.unshift({ user: req.user.id });
+
+          // save post with new likes
+          post.save().then(post => res.json(post));
+        })
+        .catch(err => res.status(404).json({ postnotfound: 'Post not found' }));
+    });
+  }
+);
+
+// @route   POST api/posts/like/:id
+// @desc    Like post
+// @access  Private
+router.post(
+  '/like/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id)
+        .then(post => {
+          // check if user already liked the post
+          const alreadyLiked =
+            post.likes.filter(like => {
+              return like.user.toString() === req.user.id;
+            }).length > 0;
+          if (alreadyLiked) {
+            return res
+              .status(400)
+              .json({ alreadyliked: 'User already liked this post' });
+          }
+
+          // add user to likes array
+          post.likes.unshift({ user: req.user.id });
+
+          // save post with new likes
+          post.save().then(post => res.json(post));
+        })
+        .catch(err => res.status(404).json({ postnotfound: 'Post not found' }));
+    });
+  }
+);
+
 module.exports = router;
