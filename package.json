@@ -4,8 +4,11 @@
   "description": "social network for developers",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Gray Smith",
   "license": "ISC",
@@ -21,6 +24,7 @@
     "validator": "^9.4.1"
   },
   "devDependencies": {
+    "concurrently": "^3.6.0",
     "nodemon": "^1.17.3"
   }
 }
