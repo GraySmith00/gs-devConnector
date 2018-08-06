@@ -72,10 +72,10 @@ class Login extends Component {
                     value={this.state.email}
                     onChange={this.onChange}
                   />
+                  {errors.email && (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  )}
                 </div>
-                {errors.email && (
-                  <div classemail="invalid-feedback">{errors.email}</div>
-                )}
                 <div className="form-group">
                   <input
                     type="password"
@@ -87,10 +87,10 @@ class Login extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                   />
+                  {errors.password && (
+                    <div className="invalid-feedback">{errors.password}</div>
+                  )}
                 </div>
-                {errors.password && (
-                  <div className="invalid-feedback">{errors.password}</div>
-                )}
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
