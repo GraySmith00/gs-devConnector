@@ -108,7 +108,7 @@ router.post(
 // @route   GET api/profile/all
 // @desc    Profile Index Page
 // @access  Public
-router.get('/api/profile/all', (req, res) => {
+router.get('/all', (req, res) => {
   const errors = {};
   Profile.find()
     .populate('user', ['name', 'avatar'])
