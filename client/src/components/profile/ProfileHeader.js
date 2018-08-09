@@ -4,6 +4,15 @@ import isEmpty from '../../validation/is-empty';
 class ProfileHeader extends Component {
   render() {
     const { profile } = this.props;
+    // const firstName =
+    //   profile.user.name
+    //     .split(' ')[0]
+    //     .slice(0, 1)
+    //     .toUpperCase() + profile.user.name.split(' ')[0].slice(1);
+
+    const fullName = profile.user.name.split(' ').map(name => {
+      return name.slice(0, 1).toUpperCase() + name.slice(1);
+    });
     return (
       <div class="row">
         <div className="col-md-12">
@@ -18,7 +27,7 @@ class ProfileHeader extends Component {
               </div>
             </div>
             <div className="text-center">
-              <h1 className="display-4 text-center">{profile.user.name}</h1>
+              <h1 className="display-4 text-center">{fullName}</h1>
               <p className="lead text-center">
                 {profile.status}{' '}
                 {isEmpty(profile.company) ? null : (
