@@ -14,7 +14,7 @@ class ProfileHeader extends Component {
       return name.slice(0, 1).toUpperCase() + name.slice(1);
     });
     return (
-      <div class="row">
+      <div className="row">
         <div className="col-md-12">
           <div className="card card-body bg-info text-white mb-3">
             <div className="row">
