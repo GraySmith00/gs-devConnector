@@ -24,7 +24,7 @@ class ProfileGithub extends Component {
     )
       .then(res => res.json())
       .then(data => {
-        if (data.message !== 'Not Found') {
+        if (data.message !== 'Not Found' && this.refs.myRef) {
           this.setState({ repos: data });
         }
       })
@@ -61,7 +61,7 @@ class ProfileGithub extends Component {
     ));
 
     return (
-      <div>
+      <div ref="myRef">
         {repos.length > 0 ? (
           <div>
             <hr />
