@@ -50,7 +50,6 @@ class Login extends Component {
 
   render() {
     const { errors } = this.state;
-    console.log(errors.password);
     return (
       <div className="login">
         <div className="container">
