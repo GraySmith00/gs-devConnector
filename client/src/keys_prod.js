@@ -1,7 +1,4 @@
-const githubSecret = process.env.GITHUB_SECRET;
-const githubClient = process.env.GITHUB_CLIENT;
-
 module.exports = {
-  githubSecret,
-  githubClient
+  githubSecret: process.env.GITHUB_SECRET,
+  githubClient: process.env.GITHUB_CLIENT
 };
