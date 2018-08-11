@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { githubClient, githubSecret } from '../../keys.js';
+const { githubClient, githubSecret } = require('../../keys.js');
 
 class ProfileGithub extends Component {
   constructor(props) {
